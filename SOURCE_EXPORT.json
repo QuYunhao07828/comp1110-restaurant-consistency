@@ -1,0 +1,191 @@
+{
+  "exported_utc": "2026-10-23T13:47:51+00:00",
+  "scope": "Code, method documentation and static UI only. Study data, human inputs, private Site metadata and personal local paths are excluded.",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 373,
+      "sha256": "a4fb4ee60f901d93edba5a27e603bdf1bd5181cb33b543fd278a5f048279c139"
+    },
+    {
+      "path": "docs/course_requirements.md",
+      "bytes": 9430,
+      "sha256": "903e212b023ab88ebfa513da804bb92fd7b7a69f49f1fddddf6ae1fbe7afd059"
+    },
+    {
+      "path": "docs/github_setup.md",
+      "bytes": 3129,
+      "sha256": "24da3f2625ee2692641836aa1d952fa903e7966e3ed073c80d65dbb07729fce5"
+    },
+    {
+      "path": "docs/literature_audit.md",
+      "bytes": 13448,
+      "sha256": "efb1a7c93fe7f606eea96f8eb15a4d23844d1351a71930fb3277cf6db2ec911a"
+    },
+    {
+      "path": "docs/methodology.md",
+      "bytes": 10546,
+      "sha256": "4a52fb95877cb91280d9881fbf51a8ff2b061469ae4eaf2ac0d85cbc145a6250"
+    },
+    {
+      "path": "docs/references.json",
+      "bytes": 7848,
+      "sha256": "026205ed880fb5324f2af3eb2e2db08f514f4c88a5d3a321bbd1caf425596b6c"
+    },
+    {
+      "path": "docs/review_workflow.md",
+      "bytes": 8392,
+      "sha256": "a894234e2ba9b39a82e000b2d9e6f6e5d6231a646e4f2bd77fb150cbbdf6eade"
+    },
+    {
+      "path": "docs/START_HERE_CN.md",
+      "bytes": 6968,
+      "sha256": "023256993c4c2dfaf06aaf3c1f31f06efda18dcfaf4cba335503150e2f24c192"
+    },
+    {
+      "path": "docs/STATUS.md",
+      "bytes": 5466,
+      "sha256": "070da8a60e23c029fed46dfa7c50bb06b1c1709e232ec1383627400e3c52d7b3"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7665,
+      "sha256": "8142ded7eab60f6e931f013a450fbe8054b1eb1ce78949d6d944dfd5b6e2bf65"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 69,
+      "sha256": "e12abb151e3fc053f551d9a5cf981e5a6332df49bda0342ea85bdc0c6c100c1e"
+    },
+    {
+      "path": "scripts/acquire.py",
+      "bytes": 5469,
+      "sha256": "aa077c7265f2f8d3d20d5e87392253475f7a994b811f6803e464951aa9f5d454"
+    },
+    {
+      "path": "scripts/acquire_csdi.py",
+      "bytes": 2416,
+      "sha256": "dcd296033d805d951cf93cbe1982ad3a96784332e1a194c17c849f1698c801ad"
+    },
+    {
+      "path": "scripts/analyse.py",
+      "bytes": 21523,
+      "sha256": "116a1907a60c5fd17da89758f9f8b78e167f8ebc5418bde31669f77d791acf65"
+    },
+    {
+      "path": "scripts/audit.py",
+      "bytes": 4937,
+      "sha256": "7e4de713502459aa868a4f2fb251e54e373d1a42e09b59db4816eb109e4364da"
+    },
+    {
+      "path": "scripts/build_reports.py",
+      "bytes": 24529,
+      "sha256": "45d0482ebdf0b9ff0e6a0bdceabf42a3043194990dfc67e246aac9e56e5c9d52"
+    },
+    {
+      "path": "scripts/build_site.mjs",
+      "bytes": 4479,
+      "sha256": "48bd1327bad0b8fff0459b5dcc2ee9ab70daa03261fbe090a32077c74774176a"
+    },
+    {
+      "path": "scripts/build_workbooks.mjs",
+      "bytes": 12092,
+      "sha256": "1218bec2016852fa9d7cc2c7e3d7b22f3d6efac674c539e00dc130df68f71811"
+    },
+    {
+      "path": "scripts/download_public.ps1",
+      "bytes": 652,
+      "sha256": "d23f3668882897ad90c7d039df9def8433ef28c66a80b0ca7433ccb56b7948f9"
+    },
+    {
+      "path": "scripts/evaluate_reviews.py",
+      "bytes": 15635,
+      "sha256": "35009b5e47fd59d3ce848e062632a4a2a1be37f74b0cd1474e05a9bddb25ebf5"
+    },
+    {
+      "path": "scripts/extract_overture.py",
+      "bytes": 3888,
+      "sha256": "3548d8fcc8ae9a4dfd23b081a0fd1bbcf8e9de7df48b1ec479113a2dd39e481d"
+    },
+    {
+      "path": "scripts/ingest_reviews.py",
+      "bytes": 5260,
+      "sha256": "be6fb60a58dc4ae69181adc44e067fe6482e60af4ec96f9e10337c4079bd9ced"
+    },
+    {
+      "path": "scripts/inspect_csdi.py",
+      "bytes": 591,
+      "sha256": "7ac8c3a5f5be0164ccd90ea816a1fc213a8f567d2245d760ad5d872c5c668613"
+    },
+    {
+      "path": "scripts/minimise_osm_metadata.py",
+      "bytes": 1149,
+      "sha256": "765c367554c28b8a0ebbcb21be25e43755ef4a417bad94d776aef98d10c7d7df"
+    },
+    {
+      "path": "scripts/package_project.py",
+      "bytes": 2832,
+      "sha256": "3baf14c5a6acec232b0af190974964e385215841b46afd4bad91cc3204d3dbc2"
+    },
+    {
+      "path": "scripts/prepare_github_source.py",
+      "bytes": 3422,
+      "sha256": "dd39018db198269c8c1d8996e30933c5ba425b6f39dbf88ef900a1161c18259c"
+    },
+    {
+      "path": "scripts/render_word.ps1",
+      "bytes": 592,
+      "sha256": "bcd200d38f88a949be63150f17b15fa6fd7c92f7a10de39426a6fb9b8b9d7389"
+    },
+    {
+      "path": "scripts/review_safety.py",
+      "bytes": 2968,
+      "sha256": "0e9c0e5ee548bc73282af4cb65367e61d737384010529105a6e00ceafdb64b40"
+    },
+    {
+      "path": "scripts/review_split.py",
+      "bytes": 2690,
+      "sha256": "7c9fbadddcebe21ff4b9e5d2320c120a04379cf11627d2425c6d10e641d221b8"
+    },
+    {
+      "path": "scripts/sample.py",
+      "bytes": 5078,
+      "sha256": "791676a0c0e2185d124b6007dea6c304e0ec5789b6faf460ea0a81117d01fda0"
+    },
+    {
+      "path": "scripts/test_evaluation.py",
+      "bytes": 11699,
+      "sha256": "54516c1c19bd6bfb7a234255391e21e5bc387bd5c9b1737a13fd177ceb95a71c"
+    },
+    {
+      "path": "scripts/test_reviews.py",
+      "bytes": 1271,
+      "sha256": "5259108dcf512fda155dce3ca3ff197a9d70dead0cc31f5bdaa5483e8c625b8f"
+    },
+    {
+      "path": "site/dist/app.js",
+      "bytes": 5968,
+      "sha256": "b392a9b70c6c9d133da912175f349bfb3040df05ddbb0aedc4c2d903dcad2300"
+    },
+    {
+      "path": "site/dist/index.html",
+      "bytes": 4476,
+      "sha256": "ac80a6982ae2811f5aa631e8c959d0e2eb8eaad4e27fceaa661c3be5317ed4f6"
+    },
+    {
+      "path": "site/dist/review.html",
+      "bytes": 1497,
+      "sha256": "472a61ae1c0785d8e0f1daa0e468d931988ee23d09d2341315d938ceadc14409"
+    },
+    {
+      "path": "site/dist/review.js",
+      "bytes": 3981,
+      "sha256": "2efc006bb5016d1e078f50e7ddf142a08d679eda3d2e6b798f6dbf40b79cfa14"
+    },
+    {
+      "path": "site/dist/styles.css",
+      "bytes": 6167,
+      "sha256": "2962ca1f5ef1aa6e326b7abb8c7c472bd45e6a6fb8e3806393623d6651fc702f"
+    }
+  ]
+}

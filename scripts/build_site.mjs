@@ -1,0 +1,24 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import sharp from 'sharp';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const dist=path.join(root,'site','dist');
+const data=JSON.parse(await fs.readFile(path.join(root,'data/processed/display_data.json'),'utf8'));
+const p=path.join(root,'data/provenance');
+const metas=await Promise.all(['fehd_en.xml.json','osm_hk_food.json.json','overture_hk_places.json.json','fehd_csdi_sample_100.geojson.json'].map(async x=>JSON.parse(await fs.readFile(path.join(p,x),'utf8'))));
+data.provenance=[{source:'FEHD XML',description:'Generation date 23 October 2026; English and Traditional Chinese licence files',retrieved_utc:metas[0].retrieved_utc},{source:'OpenStreetMap',description:'Food-amenity bounding-box snapshot; 7,679 candidate objects, including surrounding areas',retrieved_utc:metas[1].retrieved_utc},{source:'Overture Places',description:'Release 2026-10-21.0; 153,821 places of every category in the search box',retrieved_utc:metas[2].retrieved_utc},{source:'FEHD CSDI',description:'Official spatial distribution linked by licence ID; 99 of 100 sample records',retrieved_utc:metas[3].retrieved_utc}];
+for(const d of data.restaurants)for(const s of Object.values(d.sources))if(s.record)delete s.record.tags;
+await fs.writeFile(path.join(dist,'data.json'),JSON.stringify(data));
+const rev=JSON.parse(await fs.readFile(path.join(root,'data/review/review_admin.json'),'utf8'));
+const hidden=new Set(['split','selection_reason','machine_score','machine_rank']);
+await fs.writeFile(path.join(dist,'review_pairs.json'),JSON.stringify(rev.map(r=>Object.fromEntries(Object.entries(r).filter(([k])=>!hidden.has(k))))));
+await fs.mkdir(path.join(dist,'downloads'),{recursive:true});
+for(const n of ['pilot_20.csv','sample_100.csv','field_summary.csv'])await fs.copyFile(path.join(root,'data/processed',n),path.join(dist,'downloads',n));
+for(const n of ['reviewer_A.csv','reviewer_B.csv','pilot_candidate_miss_search.csv'])await fs.copyFile(path.join(root,'data/review',n),path.join(dist,'downloads',n));
+await fs.copyFile(path.join(root,'docs/methodology.md'),path.join(dist,'downloads/methodology.md'));
+const figdir=path.join(root,'outputs/study_2026-10-23/figures');await fs.mkdir(figdir,{recursive:true});
+for(const [scope,n]of [['pilot',20],['main_provisional',100]]){let bars='';const states=['Automatic proposal','Review needed','No strong candidate','No candidate'];const colors=['#335f7b','#d6a65c','#adb9c1','#e5e9ed'];for(const [i,src]of ['OSM','Overture'].entries()){let x=135;bars+=`<text x="15" y="${67+i*70}" font-size="17" fill="#172b3d">${src}</text>`;for(let j=0;j<states.length;j++){const count=data.summary.link_status[scope][src][states[j]]||0,w=count/n*535;bars+=`<rect x="${x}" y="${43+i*70}" width="${w}" height="36" fill="${colors[j]}"/>`;if(count)bars+=`<text x="${x+w/2}" y="${67+i*70}" font-size="16" text-anchor="middle" fill="${j===0?'white':'#172b3d'}">${count}</text>`;x+=w}}let legend='';for(let i=0;i<states.length;i++){const x=(i%2)*345+15,y=192+Math.floor(i/2)*25;legend+=`<rect x="${x}" y="${y-11}" width="13" height="13" fill="${colors[i]}"/><text x="${x+20}" y="${y}" font-size="13" fill="#546575">${states[i]}</text>`}const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="720" height="258"><rect width="720" height="258" fill="white"/><g font-family="Arial,sans-serif"><text x="15" y="23" font-size="17" font-weight="bold" fill="#172b3d">${n} branches per source · automatic status only</text>${bars}${legend}<text x="15" y="245" font-size="11" fill="#546575">Independent human reference labels pending. These counts are not validated coverage.</text></g></svg>`;await fs.writeFile(path.join(figdir,scope+'_link_status.svg'),svg);await sharp(Buffer.from(svg)).resize({width:1440}).png().toFile(path.join(figdir,scope+'_link_status.png'))}
+const manifest=JSON.parse(await fs.readFile(path.join(root,'site/.openai/hosting.json'),'utf8'));if(!manifest.project_id||manifest.static?.directory!=='dist')throw Error('Invalid Site identity/configuration');
+const files=await fs.readdir(dist);if(!files.includes('index.html')||data.restaurants.length!==100||rev.length!==60)throw Error('Incomplete Site payload');
+console.log(JSON.stringify({restaurants:data.restaurants.length,blinded_review_pairs:rev.length,data_bytes:(await fs.stat(path.join(dist,'data.json'))).size,project_id:manifest.project_id,figures:2}));

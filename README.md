@@ -70,4 +70,3 @@ No STA feedback or detailed final-report rubric has been received. Individual lo
 ## Data attribution
 
 FEHD / HKSAR Government / DATA.GOV.HK; © OpenStreetMap contributors under ODbL; Overture Maps Foundation and the upstream sources retained in each record, with their applicable licence notices. See `docs/methodology.md` and the official attribution links there. This project does not replace upstream database licences with a software licence or imply source endorsement.
-
