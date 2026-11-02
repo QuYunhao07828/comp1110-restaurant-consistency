@@ -4,6 +4,10 @@ This record describes current evidence, not retrospective claims of work on earl
 
 ## Immediate milestone
 
+Update on 2 November 2026: the owner requested AI-assisted review rather than checking every source row alone. Evidence preparation has run for the 40 non-pilot Sha Tin branch/source tasks, retaining broader retrieval separately from the baseline and leaving all human inputs blank. Ten pilot tasks remain deferred. No independent human labels, adjudication, genuine freeze or validated metrics have been supplied to this workspace. The private evidence and assistance outputs are separate from public source publication. See `docs/ai_assisted_review.md`; the assistance does not complete the original validation commitment.
+
+The owner also supplied instructor/TA guidance permitting substantive GenAI assistance while requiring student correctness checks and Final Report tool/prompt disclosure. The Project Plan disclosure waiver does not extend to the Final Report. A checklist is in `docs/ai_use_disclosure.md`; a complete historical prompt log and genuine student verification are still needed.
+
 Produce the evidence required for the 20–24 October interim meeting: schema and licence review, reproducible sampling, 20-branch pilot, source extraction, matching tests, validation materials and a progress briefing.
 
 ## Full project requirements

@@ -1,11 +1,21 @@
 {
-  "exported_utc": "2026-10-23T13:47:51+00:00",
+  "exported_utc": "2026-11-02T13:31:51+00:00",
   "scope": "Code, method documentation and static UI only. Study data, human inputs, private Site metadata and personal local paths are excluded.",
   "files": [
     {
       "path": ".gitignore",
       "bytes": 373,
       "sha256": "a4fb4ee60f901d93edba5a27e603bdf1bd5181cb33b543fd278a5f048279c139"
+    },
+    {
+      "path": "docs/ai_assisted_review.md",
+      "bytes": 4702,
+      "sha256": "e5c48dad7cd58ea16f7f477e1cf6fce1745be26bb70cc861401ff82b9f1a3442"
+    },
+    {
+      "path": "docs/ai_use_disclosure.md",
+      "bytes": 2621,
+      "sha256": "58c538b576b28753bb451527abecf8f40d97b44fff7eea4e271c5efffc1c4be9"
     },
     {
       "path": "docs/course_requirements.md",
@@ -44,13 +54,13 @@
     },
     {
       "path": "docs/STATUS.md",
-      "bytes": 5466,
-      "sha256": "070da8a60e23c029fed46dfa7c50bb06b1c1709e232ec1383627400e3c52d7b3"
+      "bytes": 6467,
+      "sha256": "da7b04cf04b3327045d13b0a618092de2f064377ccff741b14c39c29006c4f42"
     },
     {
       "path": "README.md",
-      "bytes": 7665,
-      "sha256": "8142ded7eab60f6e931f013a450fbe8054b1eb1ce78949d6d944dfd5b6e2bf65"
+      "bytes": 8180,
+      "sha256": "0c5f2de19c43140403cca941b20f158672199c4ed2a51c3f89048683d575b0ca"
     },
     {
       "path": "requirements.txt",
@@ -73,9 +83,19 @@
       "sha256": "116a1907a60c5fd17da89758f9f8b78e167f8ebc5418bde31669f77d791acf65"
     },
     {
+      "path": "scripts/assist_review.py",
+      "bytes": 8778,
+      "sha256": "505e157b69e6fdba8cd5dd280ab0cfa29a93be87590b79527864b276522d5686"
+    },
+    {
       "path": "scripts/audit.py",
       "bytes": 4937,
       "sha256": "7e4de713502459aa868a4f2fb251e54e373d1a42e09b59db4816eb109e4364da"
+    },
+    {
+      "path": "scripts/build_assisted_workbook.mjs",
+      "bytes": 7885,
+      "sha256": "641d2fe47aa1c4a26aa60876eaeb2dd3f9bb401ce54c03aa3854559926d77948"
     },
     {
       "path": "scripts/build_reports.py",
@@ -151,6 +171,11 @@
       "path": "scripts/sample.py",
       "bytes": 5078,
       "sha256": "791676a0c0e2185d124b6007dea6c304e0ec5789b6faf460ea0a81117d01fda0"
+    },
+    {
+      "path": "scripts/test_assist_review.py",
+      "bytes": 1680,
+      "sha256": "ab111235072002eefad56d0b7bbb3a16b66709546e7f1ed24acad8043c2403b5"
     },
     {
       "path": "scripts/test_evaluation.py",

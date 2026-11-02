@@ -59,6 +59,8 @@ The JS artifact builders use the Codex bundled `@oai/artifact-tool` and `sharp` 
 
 ## Important limits
 
+AI-assisted snapshot review is available through `scripts/assist_review.py` and `scripts/build_assisted_workbook.mjs`. It prepares evidence and separately identified suggestions for non-pilot tasks, with human fields left blank and pilot evaluation cases deferred. See `docs/ai_assisted_review.md`. This assistance is not a substitute for the promised independent reviewers and does not add validated results. The private assessment inputs, workbook and study records remain outside this public source repository.
+
 The 100 branches are an equal-quota four-district sample, not representative of all Hong Kong. FEHD is a licensing frame, not a live operating-status authority. OSM and Overture raw extracts use different category populations, so their raw totals cannot be compared as restaurant coverage. Exact address disagreement is a text-representation difference, not proof of a wrong location. Fields used to select links bias conditional agreement.
 
 The K11 mall-suffix development example is reserved for calibration. Pilot features were inspected during development, so the remaining reference-label holdout is not an untouched external test. See `data/review/review_protocol.json`.
