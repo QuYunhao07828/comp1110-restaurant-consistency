@@ -1,5 +1,5 @@
 {
-  "exported_utc": "2026-11-02T13:31:51+00:00",
+  "exported_utc": "2026-11-02T13:54:30+00:00",
   "scope": "Code, method documentation and static UI only. Study data, human inputs, private Site metadata and personal local paths are excluded.",
   "files": [
     {
@@ -33,6 +33,11 @@
       "sha256": "efb1a7c93fe7f606eea96f8eb15a4d23844d1351a71930fb3277cf6db2ec911a"
     },
     {
+      "path": "docs/main_review_workflow.md",
+      "bytes": 5076,
+      "sha256": "c59aaa2b953646744138864db64d7a02a4f4d7156df0ae9602732ae65206b8b2"
+    },
+    {
       "path": "docs/methodology.md",
       "bytes": 10546,
       "sha256": "4a52fb95877cb91280d9881fbf51a8ff2b061469ae4eaf2ac0d85cbc145a6250"
@@ -54,13 +59,13 @@
     },
     {
       "path": "docs/STATUS.md",
-      "bytes": 6467,
-      "sha256": "da7b04cf04b3327045d13b0a618092de2f064377ccff741b14c39c29006c4f42"
+      "bytes": 7006,
+      "sha256": "9b7f148eab56a7babbbe8a84e5ce846b82469220b6659b6bea44a86792f7b94a"
     },
     {
       "path": "README.md",
-      "bytes": 8180,
-      "sha256": "0c5f2de19c43140403cca941b20f158672199c4ed2a51c3f89048683d575b0ca"
+      "bytes": 8610,
+      "sha256": "da643a1dacc4f6f2663f8eb07ae4079f7768bf635635ca018340cb4d68050539"
     },
     {
       "path": "requirements.txt",
@@ -128,6 +133,11 @@
       "sha256": "3548d8fcc8ae9a4dfd23b081a0fd1bbcf8e9de7df48b1ec479113a2dd39e481d"
     },
     {
+      "path": "scripts/finalise_main_review.py",
+      "bytes": 13389,
+      "sha256": "0a2b099ea22ce57c568cca8aef73570c7ca93863d0f384ff2d7943e98e3acf55"
+    },
+    {
       "path": "scripts/ingest_reviews.py",
       "bytes": 5260,
       "sha256": "be6fb60a58dc4ae69181adc44e067fe6482e60af4ec96f9e10337c4079bd9ced"
@@ -181,6 +191,11 @@
       "path": "scripts/test_evaluation.py",
       "bytes": 11699,
       "sha256": "54516c1c19bd6bfb7a234255391e21e5bc387bd5c9b1737a13fd177ceb95a71c"
+    },
+    {
+      "path": "scripts/test_main_review.py",
+      "bytes": 9999,
+      "sha256": "4358ffa9218ef13e299502112caf13988892f2387746d0d88f26955f0de54c21"
     },
     {
       "path": "scripts/test_reviews.py",

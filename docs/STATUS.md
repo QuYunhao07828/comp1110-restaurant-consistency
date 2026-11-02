@@ -8,6 +8,8 @@ Update on 2 November 2026: the owner requested AI-assisted review rather than ch
 
 The owner also supplied instructor/TA guidance permitting substantive GenAI assistance while requiring student correctness checks and Final Report tool/prompt disclosure. The Project Plan disclosure waiver does not extend to the Final Report. A checklist is in `docs/ai_use_disclosure.md`; a complete historical prompt log and genuine student verification are still needed.
 
+The separate full-sample import and summary workflow is now implemented in `scripts/finalise_main_review.py`, with 22 isolated tests. A blank 200-task handoff is prepared; it is not 200 completed reviews. The importer requires the real independent-review freeze, checks source fields against the retained package, rejects incomplete/duplicate declarations and preserves reviewed-link coverage and field-specific denominators in a new output version. No genuine final main-sample analysis has been run. See `docs/main_review_workflow.md`.
+
 Produce the evidence required for the 20–24 October interim meeting: schema and licence review, reproducible sampling, 20-branch pilot, source extraction, matching tests, validation materials and a progress briefing.
 
 ## Full project requirements
