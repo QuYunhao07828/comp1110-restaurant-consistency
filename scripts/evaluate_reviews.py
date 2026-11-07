@@ -166,8 +166,22 @@ def verify_matching_outputs(root=ROOT):
 
 def verify_freeze(path, path_a, path_b):
     frozen = read_json(path)
-    if frozen.get("version") != "review-freeze-v1" or not frozen.get("held_out_labels_unseen_attested"):
-        raise ValueError("A documented pre-evaluation freeze and explicit unseen-label attestation are required.")
+    version = frozen.get("version")
+    if version == "review-freeze-v1":
+        if not frozen.get("held_out_labels_unseen_attested"):
+            raise ValueError("A documented pre-evaluation freeze and explicit unseen-label attestation are required.")
+    elif version == "review-freeze-v2-retrospective":
+        if (frozen.get("evaluation_design") != "retrospective_fixed_rule" or
+                frozen.get("held_out_labels_unseen_attested") is not False or
+                not text(frozen.get("pre_freeze_label_access_note")) or
+                not frozen.get("pre_freeze_exposed_pair_ids")):
+            raise ValueError("Retrospective assessment requires explicit label-access disclosure and cannot claim unseen labels.")
+        admin = {r["pair_id"]: r for r in read_json(ROOT / "data/review/review_admin.json")}
+        exposed = frozen["pre_freeze_exposed_pair_ids"]
+        if len(set(exposed)) != len(exposed) or any(p not in admin or admin[p]["split"] != "held-out" for p in exposed):
+            raise ValueError("Label-access disclosure must identify original held-out pairs without changing the evaluation set.")
+    else:
+        raise ValueError("A supported documented rule lock is required.")
     if set(frozen.get("bound_file_sha256", {})) != set(BOUND_FILES):
         raise ValueError("The freeze is missing a required rule, data or split binding.")
     frozen_at = datetime.fromisoformat(frozen["frozen_utc"])
@@ -191,7 +205,11 @@ def main():
     parser.add_argument("--freeze", type=Path)
     parser.add_argument("--owner")
     parser.add_argument("--note")
-    parser.add_argument("--attest-held-out-unseen", action="store_true")
+    design = parser.add_mutually_exclusive_group()
+    design.add_argument("--attest-held-out-unseen", action="store_true")
+    design.add_argument("--acknowledge-pre-freeze-label-access", action="store_true")
+    parser.add_argument("--pre-freeze-label-access-note")
+    parser.add_argument("--exposed-pair-id", action="append", default=[])
     args = parser.parse_args()
     if args.output_dir.exists():
         parser.error("Output directory exists. Use a new version; original inputs must be retained.")
@@ -199,16 +217,31 @@ def main():
     a, b = independent_inputs(args.reviewer_a, args.reviewer_b, admin)
     now = datetime.now(timezone.utc).isoformat(timespec="seconds")
     if args.stage == "freeze":
-        if not args.adjudication or not text(args.owner) or not text(args.note) or not args.attest_held_out_unseen:
-            parser.error("Freeze requires completed calibration, an actual owner, calibration-change note and explicit unseen-label attestation.")
+        if not args.adjudication or not text(args.owner) or not text(args.note):
+            parser.error("Rule lock requires completed calibration, an actual owner and calibration-change note.")
+        retrospective = args.acknowledge_pre_freeze_label_access
+        if not (args.attest_held_out_unseen or retrospective):
+            parser.error("Choose an honest unseen-label attestation or explicitly disclosed retrospective assessment.")
+        if retrospective and (not text(args.pre_freeze_label_access_note) or not args.exposed_pair_id):
+            parser.error("Retrospective assessment needs a label-access note and each known exposed held-out pair ID.")
+        if not retrospective and (args.pre_freeze_label_access_note or args.exposed_pair_id):
+            parser.error("A label-access disclosure is incompatible with an unseen-label attestation.")
+        if retrospective and (len(set(args.exposed_pair_id)) != len(args.exposed_pair_id) or
+                              any(k not in admin or admin[k]["split"] != "held-out" for k in args.exposed_pair_id)):
+            parser.error("Identify original held-out pairs; do not alter or remove them.")
         refs = resolved_references(read_csv(args.adjudication), admin, a, b, "calibration")
         verify_matching_outputs(ROOT)
-        result = {"version": "review-freeze-v1", "frozen_utc": now, "owner": args.owner,
-                  "calibration_note": args.note, "held_out_labels_unseen_attested": True,
+        result = {"version": "review-freeze-v2-retrospective" if retrospective else "review-freeze-v1", "frozen_utc": now, "owner": args.owner,
+                  "evaluation_design": "retrospective_fixed_rule" if retrospective else "reference_label_holdout",
+                  "calibration_note": args.note, "held_out_labels_unseen_attested": not retrospective,
                   "calibration_pair_n": len(refs), "calibration_adjudication_sha256": digest(args.adjudication),
                   "review_input_sha256": [digest(p) for p in [args.reviewer_a, args.reviewer_b]],
                   "bound_file_sha256": {name: digest(ROOT / name) for name in BOUND_FILES},
                   "limitation": "Pilot features were inspected during development; this holds out reference labels, not an untouched external dataset. Attestation is a human declaration, not machine proof of independence."}
+        if retrospective:
+            result.update(pre_freeze_label_access_note=args.pre_freeze_label_access_note,
+                          pre_freeze_exposed_pair_ids=args.exposed_pair_id,
+                          limitation="Some reference labels were disclosed before this actual rule lock. This is a retrospective assessment of a fixed rule on the unchanged pair set, not an unseen-label test. Calibration adjudication and source/rule integrity checks remain required.")
         args.output_dir.mkdir(parents=True, exist_ok=False)
         write_json(args.output_dir / "freeze.json", result)
         print("Calibration validated and rules frozen at the actual current time. No held-out decisions exported or metrics computed.")
@@ -237,7 +270,11 @@ def main():
     result = {"evaluated_utc": now, "freeze_sha256": digest(args.freeze),
               "held_out_adjudication_sha256": digest(args.adjudication),
               "prediction_definition": "Match iff the fixed workflow automatically proposes this exact branch/source/candidate link. Review-needed and weak cases are non-acceptance (negative) decisions, not human non-matches.",
-              "scope": "Automatic-link acceptance on 39 purposefully selected held-out candidate pairs only. Not whole-source accuracy, end-to-end retrieval recall or validated 100-branch coverage.",
+              "evaluation_design": frozen.get("evaluation_design", "reference_label_holdout"),
+              "reference_label_holdout_intact": frozen["held_out_labels_unseen_attested"],
+              "scope": ("Retrospective fixed-rule automatic-link acceptance on the unchanged 39 purposefully selected evaluation pairs. Some reference labels were disclosed before the rule lock; not an unseen-label test or whole-source accuracy."
+                        if frozen.get("evaluation_design") == "retrospective_fixed_rule" else
+                        "Automatic-link acceptance on 39 purposefully selected held-out candidate pairs only. Not whole-source accuracy, end-to-end retrieval recall or validated 100-branch coverage."),
               "pooled": classification_metrics(refs, predicted),
               "by_source": {source: classification_metrics({k: v for k, v in refs.items() if admin[k]["candidate_source"] == source},
                            {k: v for k, v in predicted.items() if admin[k]["candidate_source"] == source}) for source in ["OSM", "Overture"]},
@@ -248,6 +285,10 @@ def main():
                  "Pilot features were inspected during development; only reference labels were held out.",
                  "Human independence and unseen-label declarations cannot be certified by this script.",
                  "The separate pilot missed-candidate searches and the full 100-branch link adjudication remain necessary."]}
+    if frozen.get("evaluation_design") == "retrospective_fixed_rule":
+        result["pre_freeze_label_access_note"] = frozen["pre_freeze_label_access_note"]
+        result["pre_freeze_exposed_pair_ids"] = frozen["pre_freeze_exposed_pair_ids"]
+        result["limitations"].append("Known pre-lock label access is disclosed. Do not describe these results as a wholly blinded or prospectively untouched holdout, and do not remove exposed cases from the denominator.")
     args.output_dir.mkdir(parents=True, exist_ok=False)
     write_json(args.output_dir / "evaluation.json", result)
     write_csv(args.output_dir / "held_out_pair_results.csv", [{"pair_id": k, "source": admin[k]["candidate_source"], "reference": v,

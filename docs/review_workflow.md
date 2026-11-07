@@ -1,6 +1,6 @@
 # Independent review and frozen evaluation
 
-Implemented on 23 October 2026. No genuine reviewer files, adjudications, freeze or evaluation result have yet been supplied or created. The commands below describe future execution after actual human work. Tests use isolated fixtures, not research findings.
+Implemented on 23 October 2026 and updated on 8 November. Two completed 60-pair reviewer forms have now been received, preserved and imported after a documented owner clarification. Calibration contains 16/21 agreements and five disagreements, with an additional consensus case flagged for evidence review. Genuine third-person adjudication, rule lock and evaluation remain pending. Known pre-lock reference-label access must be disclosed through the retrospective mode described below. Commands use example filenames; tests use isolated fixtures, not research findings.
 
 ## What is measured
 
@@ -36,6 +36,8 @@ Evaluate calibration examples and document any method changes. If the rule chang
 
 ## 3. Record an actual freeze
 
+If a held-out reference label has already been seen, do not make the unseen-label attestation below. The alternative is an explicitly retrospective fixed-rule assessment: complete genuine calibration adjudication, retain the original evaluation cases, disclose every known pre-lock exposure, and use `--acknowledge-pre-freeze-label-access --pre-freeze-label-access-note "Describe the actual access" --exposed-pair-id ORIGINAL_PAIR_ID` instead of `--attest-held-out-unseen`. This writes a different versioned lock record with `held_out_labels_unseen_attested: false`. It preserves all input and adjudication checks and labels the resulting evaluation retrospective. It does not recover an untouched holdout or authorise removing difficult or exposed cases. If the intended claim still requires an unseen-label test, obtain fresh independent reference cases before making that claim.
+
 After calibration and any necessary recomputation, use the final code/data version, the unchanged original reviewer files and completed calibration CSV:
 
 ```powershell
@@ -67,7 +69,7 @@ Only valid real inputs and unchanged frozen rules can reach this stage. It creat
 - Complete the 40 pilot source searches with actual names, searches and evidence. Do not call a negative search proof of absence.
 - Resolve main-sample branch links before claiming validated 100-branch coverage or field agreement. The 60 candidate labels alone do not validate all 200 branch/source links.
 - Rebuild the final tables and report from the appropriate validated analysis version. The existing report and spreadsheet remain explicitly provisional, and are not automatically promoted to final by running these tools.
-- Obtain STA feedback and the later official report/presentation requirements. Logs, reflections and contribution claims require the actual students' input.
+- Apply the three final submission guidelines supplied on 8 November and summarised in `final_submission_requirements.md`. Logs, reflections and contribution claims require actual students' input. No additional STA topic/method feedback has been supplied beyond the reported AI-use guidance.
 
 ## Verification
 

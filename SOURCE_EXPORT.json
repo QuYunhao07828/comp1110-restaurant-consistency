@@ -1,5 +1,5 @@
 {
-  "exported_utc": "2026-11-02T13:54:30+00:00",
+  "exported_utc": "2026-11-07T18:03:27+00:00",
   "scope": "Code, method documentation and static UI only. Study data, human inputs, private Site metadata and personal local paths are excluded.",
   "files": [
     {
@@ -14,13 +14,18 @@
     },
     {
       "path": "docs/ai_use_disclosure.md",
-      "bytes": 2621,
-      "sha256": "58c538b576b28753bb451527abecf8f40d97b44fff7eea4e271c5efffc1c4be9"
+      "bytes": 3768,
+      "sha256": "baae3f5642f231499a366244d3a10b6ba4c66fa1b34cd1f13da4e84a4a533b95"
     },
     {
       "path": "docs/course_requirements.md",
-      "bytes": 9430,
-      "sha256": "903e212b023ab88ebfa513da804bb92fd7b7a69f49f1fddddf6ae1fbe7afd059"
+      "bytes": 9931,
+      "sha256": "36117fc9bb902e7b62c586bbb3d0326813b54d570b20b9e62866db40ba2672b9"
+    },
+    {
+      "path": "docs/final_submission_requirements.md",
+      "bytes": 3633,
+      "sha256": "7db8e17d1a58a22db3415ee02910943d274c5ea6bc2ce77a193d09f38907453c"
     },
     {
       "path": "docs/github_setup.md",
@@ -49,8 +54,13 @@
     },
     {
       "path": "docs/review_workflow.md",
-      "bytes": 8392,
-      "sha256": "a894234e2ba9b39a82e000b2d9e6f6e5d6231a646e4f2bd77fb150cbbdf6eade"
+      "bytes": 9722,
+      "sha256": "86fabd3364181d3633a81dc91260cc5b06cf282ab1899802ee3bf3efea730294"
+    },
+    {
+      "path": "docs/snapshot_diagnostics.md",
+      "bytes": 2824,
+      "sha256": "2be34d62feed5322e224951f9a1fc1ca771b0f6a0f13739ebcbd02639ba761f0"
     },
     {
       "path": "docs/START_HERE_CN.md",
@@ -59,13 +69,13 @@
     },
     {
       "path": "docs/STATUS.md",
-      "bytes": 7006,
-      "sha256": "9b7f148eab56a7babbbe8a84e5ce846b82469220b6659b6bea44a86792f7b94a"
+      "bytes": 9231,
+      "sha256": "fc3d3e81be7a074aab1e3216cabe92f306d30f72fa83e1646097efaf4bcc84a9"
     },
     {
       "path": "README.md",
-      "bytes": 8610,
-      "sha256": "da643a1dacc4f6f2663f8eb07ae4079f7768bf635635ca018340cb4d68050539"
+      "bytes": 9839,
+      "sha256": "979de627b83d3c02ceef9b0c382e727eb5af3389a88eb34de433f87675bccc73"
     },
     {
       "path": "requirements.txt",
@@ -89,8 +99,8 @@
     },
     {
       "path": "scripts/assist_review.py",
-      "bytes": 8778,
-      "sha256": "505e157b69e6fdba8cd5dd280ab0cfa29a93be87590b79527864b276522d5686"
+      "bytes": 9269,
+      "sha256": "2a4f6a0a43d0ddd6c2807ce0edad0766f78795ba568d2a6a13fba70bb61dc77a"
     },
     {
       "path": "scripts/audit.py",
@@ -98,9 +108,14 @@
       "sha256": "7e4de713502459aa868a4f2fb251e54e373d1a42e09b59db4816eb109e4364da"
     },
     {
+      "path": "scripts/audit_review_returns.py",
+      "bytes": 5930,
+      "sha256": "95c6d93d58fe62e3adc95a51611a77cb619ab2f0aba0bc0e8bbcee74a9276c0b"
+    },
+    {
       "path": "scripts/build_assisted_workbook.mjs",
-      "bytes": 7885,
-      "sha256": "641d2fe47aa1c4a26aa60876eaeb2dd3f9bb401ce54c03aa3854559926d77948"
+      "bytes": 8611,
+      "sha256": "de3cd3bbab5c882730253abd6241f8e5d197645c8ac0a95b2cf60086fe13cd1f"
     },
     {
       "path": "scripts/build_reports.py",
@@ -118,14 +133,19 @@
       "sha256": "1218bec2016852fa9d7cc2c7e3d7b22f3d6efac674c539e00dc130df68f71811"
     },
     {
+      "path": "scripts/diagnose_snapshot.py",
+      "bytes": 8844,
+      "sha256": "8fed3fd46a9c96cbf782ff4b631913fc59a420f722a711219e3dd822b4f0de7b"
+    },
+    {
       "path": "scripts/download_public.ps1",
       "bytes": 652,
       "sha256": "d23f3668882897ad90c7d039df9def8433ef28c66a80b0ca7433ccb56b7948f9"
     },
     {
       "path": "scripts/evaluate_reviews.py",
-      "bytes": 15635,
-      "sha256": "35009b5e47fd59d3ce848e062632a4a2a1be37f74b0cd1474e05a9bddb25ebf5"
+      "bytes": 19460,
+      "sha256": "44af5b3135a4a0983121141f777b85c96e1f8d0184cedf6f3a61fe3416ebc65f"
     },
     {
       "path": "scripts/extract_overture.py",
@@ -184,13 +204,13 @@
     },
     {
       "path": "scripts/test_assist_review.py",
-      "bytes": 1680,
-      "sha256": "ab111235072002eefad56d0b7bbb3a16b66709546e7f1ed24acad8043c2403b5"
+      "bytes": 1937,
+      "sha256": "3fe4104108e86231b7a0b6f2d1f51675b049d1da04e0e56d1683b627ed565efe"
     },
     {
       "path": "scripts/test_evaluation.py",
-      "bytes": 11699,
-      "sha256": "54516c1c19bd6bfb7a234255391e21e5bc387bd5c9b1737a13fd177ceb95a71c"
+      "bytes": 13843,
+      "sha256": "087452a747a1946726c17d0d36d3d3b48d3091feb9ad2538b6fac590af8c7ace"
     },
     {
       "path": "scripts/test_main_review.py",
@@ -198,9 +218,19 @@
       "sha256": "4358ffa9218ef13e299502112caf13988892f2387746d0d88f26955f0de54c21"
     },
     {
+      "path": "scripts/test_return_audit.py",
+      "bytes": 2265,
+      "sha256": "bd419e15548b150632f481ca2451d30f4c7bed24b8f967f4e198a3d891b24f66"
+    },
+    {
       "path": "scripts/test_reviews.py",
       "bytes": 1271,
       "sha256": "5259108dcf512fda155dce3ca3ff197a9d70dead0cc31f5bdaa5483e8c625b8f"
+    },
+    {
+      "path": "scripts/test_snapshot_diagnostics.py",
+      "bytes": 1374,
+      "sha256": "88b85b9ad255d170b4cd9d3b5affae034a0a1e675913c03789e7c9f239b8ed1a"
     },
     {
       "path": "site/dist/app.js",

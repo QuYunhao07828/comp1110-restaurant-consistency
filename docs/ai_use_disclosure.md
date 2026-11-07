@@ -13,10 +13,14 @@ This permission allows substantive assistance, not only grammar correction. It d
 - Which suggestions were used, rejected or corrected, and the actual student checks and supporting sources.
 - Limitations and remaining unresolved cases; no invented review activity, contribution hours or meetings.
 
-The existing conversational history should be exported or otherwise retained by the group. A short reconstructed list of selected prompts is not a complete prompt log. Historical usage must not be claimed complete merely because this checklist or a new log exists.
+The detailed Final Report guideline supplied on 8 November supersedes any earlier assumption that a full transcript is required. For a long conversation, describe its purpose, stages and use, and quote the exact prompts that generated incorporated material. Retain the conversation where available for traceability, but do not present a reconstructed prompt as verbatim or claim an incomplete list is a complete history. Exploratory brainstorming with no incorporated material need not be declared under that guideline.
 
 ## Study-specific separation
 
 The non-pilot assistance workbook distinguishes assistant suggestions from blank student confirmation fields. The submitted independent 60-pair calibration/evaluation protocol remains in force unless the STA approves and the final report explains a revised method. Never count two copies of the same AI output as two independent reference judgements. An independent student check requires actual work by the student; recording a name is not itself proof of verification.
 
-The final acknowledgement should accurately describe AI-assisted methods and code as well as writing. The precise required appendix format and any additional Moodle requirements still need to be checked. Keep the actual detailed prompt log with the submission evidence rather than publishing personal correspondence or entire private conversations in this public source repository.
+The final acknowledgement should accurately describe AI-assisted methods, code, evidence preparation, analysis and writing. The supplied final guideline requires the tool/model or version when known, affected material, exact relevant prompts and how outputs were used. State an unrecorded model/version honestly and ask the owner to check the visible product label rather than inventing one. Keep private conversations and correspondence outside the public source repository. The contribution table and students' responsibility for factual checking remain separate requirements.
+
+## Current review record
+
+The owner reports two independent completed reviewer forms on 8 November. Software checks validate their structure and retained identifiers; they cannot certify actual independence. An owner clarification exposed one evaluation label before the formal rule lock. The evaluation workflow therefore supports a disclosed retrospective fixed-rule mode, preserves all original cases and does not assert a wholly intact reference-label holdout. Original judgements, corrections and AI-authored suggestions are retained separately in the private evidence package. Third-person adjudication must record the actual person and date; AI suggestions do not supply that signature.

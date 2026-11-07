@@ -5,15 +5,26 @@ import {Workbook,SpreadsheetFile} from '@oai/artifact-tool';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const dir=path.resolve(root,process.argv[2]||'outputs/assisted_review_2026-11-02');
-const output=path.join(dir,'ShaTin_AI_Assisted_Review.xlsx');
+const evidence=JSON.parse(await fs.readFile(path.join(dir,'evidence.json'),'utf8'));
+const districtSettings={
+ 'Sha Tin':['ShaTin','ST','沙田'],
+ 'Central and Western':['CentralWestern','CW','中西区'],
+ 'Wan Chai':['WanChai','WC','湾仔'],
+ 'Yau Tsim Mong':['YauTsimMong','YM','油尖旺']
+};
+const settings=districtSettings[evidence.district];
+if(!settings)throw Error('Unknown submitted-plan district.');
+const [stem,prefix,districtTitle]=settings;
+const output=path.join(dir,`${stem}_AI_Assisted_Review.xlsx`);
 for(const p of [output,path.join(dir,'triage.json')]){
  if(await fs.access(p).then(()=>true).catch(()=>false))throw Error('Output already exists; use a new directory.');
 }
-const evidence=JSON.parse(await fs.readFile(path.join(dir,'evidence.json'),'utf8'));
 const curation=JSON.parse(await fs.readFile(path.join(dir,'assessments.json'),'utf8'));
 const overrides=new Map(curation.overrides.map(r=>[`${r.branch_id}|${r.source}`,r]));
 const refs=new Map(curation.external_sources.map(r=>[r.id,r]));
 const forbidden=new Set(evidence.deferred_pilot_tasks.map(r=>r.branch_id));
+const taskKeys=new Set(evidence.cases.map(r=>`${r.branch_id}|${r.source}`));
+if(overrides.size!==curation.overrides.length||curation.overrides.some(r=>!taskKeys.has(`${r.branch_id}|${r.source}`)))throw Error('Unknown or duplicate curation task.');
 const tasks=evidence.cases.map((r,i)=>{
   if(forbidden.has(r.branch_id)||[r.human_decision,r.human_name,r.human_date,r.human_evidence].some(Boolean))throw Error('Protected case or filled human fields.');
   const assessment=overrides.get(`${r.branch_id}|${r.source}`);
@@ -22,7 +33,8 @@ const tasks=evidence.cases.map((r,i)=>{
   });
   const shortlist=[...selected,...r.records.filter(v=>v.was_in_saved_top12),...r.records.slice(0,4)]
     .filter((v,j,a)=>a.findIndex(q=>q.id===v.id)===j);
-  return {...r,case_id:`ST${String(i+1).padStart(2,'0')}`,suggestion:assessment?.suggestion||'AI未确认对应',
+  if((assessment?.external||[]).some(id=>!refs.has(id)))throw Error('Unknown supplementary source.');
+  return {...r,case_id:`${prefix}${String(i+1).padStart(2,'0')}`,suggestion:assessment?.suggestion||'AI未确认对应',
     selected_ids:selected.map(v=>v.id),reason:assessment?.reason||(curation.case_notes[r.branch_id]||'未形成充分分店身份依据。'),
     question:assessment?.question||'',external:(assessment?.external||[]).map(id=>refs.get(id)),shortlist};
 });
@@ -41,10 +53,10 @@ function table(s,headers,rows,widths,height=82){
   s.freezePanes.freezeRows(7);s.freezePanes.freezeColumns(2);
   return end;
 }
-base(main,'沙田餐厅 AI 辅助核对');
+base(main,`${districtTitle}餐厅 AI 辅助核对`);
 main.getRange('A4:B5').values=[['快照日期','2026-10-23'],['人工信息填齐','']];
 main.getRange('D4:E5').values=[['AI初筛任务',40],['独立人工标签新增',0]];
-main.getRange('G4:H5').values=[['试点任务延后',10],['补充网页观察日','2026-11-02']];
+main.getRange('G4:H5').values=[['试点任务延后',10],['辅助整理日期',evidence.prepared_client_date]];
 main.getRange('A6').values=[['I至L列供你补充；AI建议不能充当独立人工验证，详细记录及来源见Evidence页。']];
 table(main,['分店ID','餐厅','来源','目标地址','AI建议','建议记录ID','证据与限制','待补资料','人工结果','人工依据或更正ID','核对人','实际日期','填写状态'],
   tasks.map(r=>[r.branch_id,r.name,r.source,r.address_zh,r.suggestion,r.selected_ids.join('; '),r.reason,r.question,'','','','','']),
@@ -73,13 +85,14 @@ main.getRange('I8').values=[['Confirmed']];wb.recalculate();
 if(main.getRange('B5').values[0][0]!==0)throw Error('Decision without evidence/name/date counted complete');
 main.getRange('I8').values=[['']];wb.recalculate();
 if(main.getRange('B5').values[0][0]!==0)throw Error('Temporary test input not cleared');
-await fs.mkdir(path.join(root,'tmp','assisted_review_qa'),{recursive:true});
+const qaDir=path.join(root,'tmp','assisted_review_qa',stem);
+await fs.mkdir(qaDir,{recursive:true});
 for(const [name,range,suffix] of [['Main review','A1:H10','main'],['Main review','I7:M10','inputs'],['Evidence','A1:H10','evidence'],['Pilot tasks','A1:H10','pilot']]){
  const p=await wb.render({sheetName:name,range,scale:1.1,format:'png'});
- await fs.writeFile(path.join(root,'tmp','assisted_review_qa',suffix+'.png'),new Uint8Array(await p.arrayBuffer()));
+ await fs.writeFile(path.join(qaDir,suffix+'.png'),new Uint8Array(await p.arrayBuffer()));
 }
 const check=await wb.inspect({kind:'match',searchTerm:'#REF!|#DIV/0!|#VALUE!|#NAME\\?|#NUM!|#NULL!|#SPILL!|#CALC!',options:{useRegex:true,maxResults:20},maxChars:2000});
-await fs.writeFile(path.join(root,'tmp','assisted_review_qa','errors.ndjson'),check.ndjson);
+await fs.writeFile(path.join(qaDir,'errors.ndjson'),check.ndjson);
 await fs.writeFile(path.join(dir,'triage.json'),JSON.stringify({scope:evidence.scope,source_snapshot_date:evidence.source_snapshot_date,
   independent_labels_created:0,human_confirmations:0,pilot_tasks_deferred:10,
   tasks:tasks.map(r=>({case_id:r.case_id,branch_id:r.branch_id,name:r.name,source:r.source,suggestion:r.suggestion,selected_ids:r.selected_ids,

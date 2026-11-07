@@ -7,6 +7,7 @@ from pathlib import Path
 from difflib import SequenceMatcher
 
 ROOT = Path(__file__).resolve().parents[1]
+DISTRICTS = ("Central and Western", "Wan Chai", "Yau Tsim Mong", "Sha Tin")
 INPUTS = ["data/processed/sample_100_enriched.json", "data/processed/candidates.json",
           "data/processed/osm_records.json", "data/processed/overture_records.json",
           "data/review/reviewer_A.csv", "data/review/reviewer_B.csv",
@@ -51,9 +52,12 @@ def validate_curation(evidence, curation):
     return True
 
 
-def build(output, district="Sha Tin", client_date="2026-11-02"):
+def build(output, district="Sha Tin", client_date=None):
+    if district not in DISTRICTS:
+        raise ValueError("Choose one of the four submitted-plan districts.")
     if output.exists():
         raise ValueError("Use a new output directory; no files are overwritten.")
+    client_date = client_date or datetime.now().date().isoformat()
     from analyse import indexes, norm, haversine, name_similarity
     from rapidfuzz import process, fuzz
     before = {p: digest(ROOT / p) for p in INPUTS}
@@ -142,5 +146,7 @@ def build(output, district="Sha Tin", client_date="2026-11-02"):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", required=True, type=Path)
+    parser.add_argument("--district", choices=DISTRICTS, default="Sha Tin")
+    parser.add_argument("--client-date", help="Actual local preparation date, ISO YYYY-MM-DD; defaults to today.")
     args = parser.parse_args()
-    build(args.output_dir)
+    build(args.output_dir, district=args.district, client_date=args.client_date)

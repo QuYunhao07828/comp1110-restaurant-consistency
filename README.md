@@ -16,7 +16,7 @@ All observations must retain actual retrieval times. No ratings, review text or 
 
 ## Evidence and human review
 
-Scripts and machine suggestions do not establish human validation. Two actual group members must independently label the validation pairs and document adjudication. Their names, decisions and contributions remain blank until completed by those people. Precision, recall and F1 remain unavailable until suitable reference labels and evaluation denominators exist.
+Scripts and machine suggestions do not establish human validation. On 8 November 2026, two separately completed 60-pair reviewer forms were received and imported after a documented input clarification. The owner reports that the reviewers worked independently without machine suggestions. The 21 calibration pairs contain 16 agreements and five disagreements; third-person adjudication remains pending. One additional consensus pair has been flagged for evidence review. Precision, recall and F1 remain unavailable until adjudicated references and evaluation denominators exist.
 
 Actual catch-up work was performed on 23 October 2026. See `docs/STATUS.md` for verified completion and remaining work, and `docs/START_HERE_CN.md` for the group handoff.
 
@@ -67,9 +67,11 @@ The 100 branches are an equal-quota four-district sample, not representative of 
 
 The K11 mall-suffix development example is reserved for calibration. Pilot features were inspected during development, so the remaining reference-label holdout is not an untouched external test. See `data/review/review_protocol.json`.
 
-The post-review workflow is implemented in `scripts/evaluate_reviews.py`: it validates calibration adjudication, records an actual rule/data freeze, opens held-out labels only after checking that freeze, and evaluates automatic-link acceptance with explicit denominators. It refuses changed frozen inputs and preserves the original judgements. See `docs/review_workflow.md` for exact commands and scope. No genuine study freeze or evaluation has occurred yet. `scripts/test_evaluation.py` exercises this workflow using isolated non-study fixtures and checks the current saved decisions against the executable rule. `scripts/review_safety.py` protects filled review inputs from baseline regeneration.
+The post-review workflow is implemented in `scripts/evaluate_reviews.py`: it validates calibration adjudication, records an actual rule/data freeze, opens evaluation labels only after checking that freeze, and evaluates automatic-link acceptance with explicit denominators. It refuses changed frozen inputs and preserves original judgements. A separate retrospective mode honestly records known reference-label access before the lock instead of making an untrue unseen-label attestation. It retains all original evaluation pairs and does not relax adjudication or input-integrity checks. See `docs/review_workflow.md`. No genuine study freeze or independent accuracy evaluation has occurred yet. `scripts/test_evaluation.py` uses isolated non-study fixtures; `scripts/review_safety.py` protects filled review inputs from baseline regeneration.
 
-No STA feedback or detailed final-report rubric has been received. Individual logs, reflections, review judgements and contributions require genuine student input. The connected repository for another course was not modified.
+The three detailed Final Report, Presentation and Self-Reflection guidelines were supplied on 8 November. Their requirements and rubric priorities are summarised in `docs/final_submission_requirements.md`. The assessed final report must be self-contained; source code and executable prototypes are not submission materials for marking. The report requires references, an approximately 250-word abstract with a clear gap, a genuine member-contribution table and a declaration of incorporated GenAI use with exact prompts. Individual experiences and contribution claims require genuine student input.
+
+Read-only diagnostics are available through `scripts/diagnose_snapshot.py`. They reproduce baseline proposals, report snapshot attribute presence and display a predeclared threshold-sensitivity grid. They read no reference labels, preserve inputs and do not produce source accuracy or validated coverage. New outputs use a fresh directory. `scripts/audit_review_returns.py` separately audits returned independent-review files without guessing invalid decisions or opening all evaluation labels.
 
 ## Data attribution
 

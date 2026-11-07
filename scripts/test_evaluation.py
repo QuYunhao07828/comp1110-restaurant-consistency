@@ -200,6 +200,31 @@ class IsolatedWorkflowTests(unittest.TestCase):
             command("evaluate", *common, "--freeze", str(freeze), "--adjudication", str(adjudication), "--output-dir", str(root / "results"))
             result = workflow.read_json(root / "results/evaluation.json")
             self.assertEqual((result["pooled"]["reviewed_n"], result["pooled"]["tp"], result["pooled"]["tn"], result["pooled"]["f1"]), (39, 26, 13, 1))
+            # A disclosed pre-lock reference exposure must retain all cases and
+            # produce an explicitly retrospective result, never a blind-test claim.
+            command("freeze", *common, "--adjudication", str(calibration), "--owner", "TEST ONLY",
+                    "--note", "Unchanged isolated fixture rule", "--acknowledge-pre-freeze-label-access",
+                    "--pre-freeze-label-access-note", "TEST ONLY: one input clarified before lock",
+                    "--exposed-pair-id", "TEST-P07-0", "--output-dir", str(root / "retro_freeze"))
+            retro = root / "retro_freeze/freeze.json"
+            self.assertFalse(workflow.read_json(retro)["held_out_labels_unseen_attested"])
+            command("prepare-held-out", *common, "--freeze", str(retro), "--output-dir", str(root / "retro_open"))
+            self.assertEqual(len(workflow.read_csv(root / "retro_open/held_out_adjudication.csv")), 39)
+            command("evaluate", *common, "--freeze", str(retro), "--adjudication", str(adjudication), "--output-dir", str(root / "retro_results"))
+            retro_result = workflow.read_json(root / "retro_results/evaluation.json")
+            self.assertEqual(retro_result["evaluation_design"], "retrospective_fixed_rule")
+            self.assertFalse(retro_result["reference_label_holdout_intact"])
+            self.assertEqual(retro_result["pooled"]["reviewed_n"], 39)
+            self.assertEqual(retro_result["pre_freeze_exposed_pair_ids"], ["TEST-P07-0"])
+            bad = workflow.read_json(retro)
+            for field, value in [("held_out_labels_unseen_attested", True),
+                                 ("pre_freeze_label_access_note", ""),
+                                 ("pre_freeze_exposed_pair_ids", []),
+                                 ("pre_freeze_exposed_pair_ids", ["TEST-P00-0"])]:
+                altered = copy.deepcopy(bad); altered[field] = value
+                workflow.write_json(root / "bad_retro.json", altered)
+                with patch.object(workflow, "ROOT", root), self.assertRaises(ValueError):
+                    workflow.verify_freeze(root / "bad_retro.json", *paths)
             with self.assertRaises(SystemExit):
                 with contextlib.redirect_stderr(io.StringIO()):
                     command("evaluate", *common, "--freeze", str(freeze), "--adjudication", str(adjudication), "--output-dir", str(root / "results"))

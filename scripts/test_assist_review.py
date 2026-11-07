@@ -1,6 +1,7 @@
 """Boundary tests for AI assistance. Fixtures are not study labels."""
 import unittest
-from assist_review import validate_curation
+from assist_review import validate_curation, build
+from pathlib import Path
 
 
 class AssistanceBoundaries(unittest.TestCase):
@@ -33,6 +34,10 @@ class AssistanceBoundaries(unittest.TestCase):
     def test_cannot_claim_independent_completion(self):
         self.e["independent_labels_created"] = 1
         with self.assertRaises(ValueError): validate_curation(self.e, self.c)
+
+    def test_unknown_district_fails_before_retrieval(self):
+        with self.assertRaisesRegex(ValueError, "four submitted-plan districts"):
+            build(Path("unused_fixture_output"), district="Not a study district")
 
 
 if __name__ == "__main__": unittest.main()
