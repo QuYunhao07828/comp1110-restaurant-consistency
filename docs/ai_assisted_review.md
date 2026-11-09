@@ -4,7 +4,7 @@
 
 On 2 November 2026 the owner requested direct assistance with the Sha Tin review tasks. The assistant can search snapshots, compare source fields, suggest counterparts, identify conflicting evidence and prepare questions. These are AI-assisted assessments, not judgements authored by two independent students. Neither AI suggestions nor a user's receipt of them establishes completed human validation.
 
-The initial task is 40 branch/source combinations for the 20 non-pilot Sha Tin branches. The other five Sha Tin branches belong to the independent pilot validation set. Their ten source-search tasks are listed as deferred and are not automatically labelled or counted as completed searches. Obtain a documented rule freeze before exposing reference labels or using pilot-case findings to change rules. Do not open the AI evidence workbook during independent A/B labelling.
+The initial task was 40 branch/source combinations for 20 non-pilot Sha Tin branches. The latest project-wide request was carried forward on 9 November into three further district workbooks, 40 tasks each. The 120 new notes suggest IDs in 52 tasks, including unresolved cases, not confirmed matches. Four workbooks now cover 160 non-pilot tasks. The other five branches per district belong to the independent pilot set; their 40 source-search tasks remain deferred, not labelled or counted as completed searches. Obtain a documented rule freeze before exposing reference labels or using pilot findings to change rules. Do not open assistance workbooks during independent A/B labelling.
 
 The supplied instructor/TA response permits substantive GenAI assistance, with student checking and mandatory Final Report disclosure. See `docs/ai_use_disclosure.md`. Independent reference review is a methodological commitment of this study, not a claim that the course bans AI analysis.
 
@@ -25,6 +25,10 @@ node scripts/build_assisted_workbook.mjs outputs/NEW_ASSISTANCE_DIRECTORY
 ```
 
 This creates one workbook and `triage.json`, refusing an existing workbook or triage output. The workbook separates AI suggestions and source evidence from blank human decision, evidence, name and date fields. Its completion formula reports only that the human fields were filled and await administrator review, not that the research is validated. The case assessments and dated data are private project evidence and are not included in the public source export.
+
+The builder accepts a third positional argument for a separate evidence directory. Set `RUNTIME_NODE_MODULES` or `CODEX_PRIMARY_RUNTIME_NODE_MODULES` to the configured bundled package directory when required. Curation dates are distinct from original retrieval dates and stored as typed Excel dates. Reading views preserve saved candidates plus selected broader evidence, with the full retrieval file date and hash; they are not exhaustive searches.
+
+On 9 November the three saved XLSX files passed ZIP integrity, 40-task uniqueness, selected-ID membership, date, cached-counter and blank-human-input checks. Input, evidence and pilot views and the longest main rows were visually inspected. Native processes returned nonzero after writing completion output and files; actual saved-file checks were used rather than relying on a completion message. No human confirmations were created.
 
 ## Supplementary observations
 

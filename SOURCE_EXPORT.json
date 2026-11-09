@@ -1,5 +1,5 @@
 {
-  "exported_utc": "2026-11-07T18:03:27+00:00",
+  "exported_utc": "2026-11-09T08:39:35+00:00",
   "scope": "Code, method documentation and static UI only. Study data, human inputs, private Site metadata and personal local paths are excluded.",
   "files": [
     {
@@ -9,8 +9,8 @@
     },
     {
       "path": "docs/ai_assisted_review.md",
-      "bytes": 4702,
-      "sha256": "e5c48dad7cd58ea16f7f477e1cf6fce1745be26bb70cc861401ff82b9f1a3442"
+      "bytes": 5802,
+      "sha256": "11170d36137900a14febc1e54e774e0a99a4e704fb5052470b5f7fcbfc9138c3"
     },
     {
       "path": "docs/ai_use_disclosure.md",
@@ -39,13 +39,13 @@
     },
     {
       "path": "docs/main_review_workflow.md",
-      "bytes": 5076,
-      "sha256": "c59aaa2b953646744138864db64d7a02a4f4d7156df0ae9602732ae65206b8b2"
+      "bytes": 5329,
+      "sha256": "ae89c07d01dd1b40856e73a2a607ac68bba5dd182124a05f0a89e515786d89ab"
     },
     {
       "path": "docs/methodology.md",
-      "bytes": 10546,
-      "sha256": "4a52fb95877cb91280d9881fbf51a8ff2b061469ae4eaf2ac0d85cbc145a6250"
+      "bytes": 10811,
+      "sha256": "614a0b0eeec11551355322a772849a560c348543bd679e0204323dca52057ff4"
     },
     {
       "path": "docs/references.json",
@@ -59,18 +59,18 @@
     },
     {
       "path": "docs/snapshot_diagnostics.md",
-      "bytes": 2824,
-      "sha256": "2be34d62feed5322e224951f9a1fc1ca771b0f6a0f13739ebcbd02639ba761f0"
+      "bytes": 3031,
+      "sha256": "b1d16da45479477c4d96de49d62f623a8c366c3269663c91d8fcd25e6fece6af"
     },
     {
       "path": "docs/START_HERE_CN.md",
-      "bytes": 6968,
-      "sha256": "023256993c4c2dfaf06aaf3c1f31f06efda18dcfaf4cba335503150e2f24c192"
+      "bytes": 4434,
+      "sha256": "98194b056c4b771ace25b1a7ae5df9499b34b71ce926244fe7093cf871e8db4c"
     },
     {
       "path": "docs/STATUS.md",
-      "bytes": 9231,
-      "sha256": "fc3d3e81be7a074aab1e3216cabe92f306d30f72fa83e1646097efaf4bcc84a9"
+      "bytes": 5836,
+      "sha256": "655f7ad2cc891f382847163b00ab547b835bfc4e09adeb30bdaaa9bb2f13df5b"
     },
     {
       "path": "README.md",
@@ -114,8 +114,8 @@
     },
     {
       "path": "scripts/build_assisted_workbook.mjs",
-      "bytes": 8611,
-      "sha256": "de3cd3bbab5c882730253abd6241f8e5d197645c8ac0a95b2cf60086fe13cd1f"
+      "bytes": 10102,
+      "sha256": "736e7d82441e57077b01cfb5de946aade998c9d681437db3570241e660f7d1e1"
     },
     {
       "path": "scripts/build_reports.py",
@@ -134,8 +134,8 @@
     },
     {
       "path": "scripts/diagnose_snapshot.py",
-      "bytes": 8844,
-      "sha256": "8fed3fd46a9c96cbf782ff4b631913fc59a420f722a711219e3dd822b4f0de7b"
+      "bytes": 9880,
+      "sha256": "7552b9d3a32f4dc9cdeafe6ecdba7b61983706ac41e08bb93be7f00ab2643505"
     },
     {
       "path": "scripts/download_public.ps1",
@@ -229,8 +229,8 @@
     },
     {
       "path": "scripts/test_snapshot_diagnostics.py",
-      "bytes": 1374,
-      "sha256": "88b85b9ad255d170b4cd9d3b5affae034a0a1e675913c03789e7c9f239b8ed1a"
+      "bytes": 2153,
+      "sha256": "4f6b505921835dea73365515a127388dc891c0a1fc6010c12692759079a77e50"
     },
     {
       "path": "site/dist/app.js",

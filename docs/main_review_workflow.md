@@ -22,7 +22,7 @@ Use one of these decisions:
 - `Uncertain`: explain the unresolved identity, suite, alias or duplicate issue. A tentative ID may be retained but will not be counted as a confirmed counterpart.
 - `No counterpart confirmed`: leave the selected ID blank and document what was checked. This is not proof that the source contains no restaurant record.
 
-The Sha Tin AI workbook remains a separate assistance view. If its suggestions are accepted or corrected, retain the filled original and transcribe the final explicit record ID and evidence into the standard declaration format. Never guess a corrected ID from prose or replace an actual student's original answer. Do not inspect or use protected pilot reference decisions to tune rules before the real freeze.
+The four district AI workbooks remain separate assistance views, each with 40 non-pilot tasks and ten deferred pilot tasks. If suggestions are accepted or corrected, retain the filled original and transcribe the final explicit record ID and evidence into the standard declaration format. The human reason must identify the exact accepted ID; multiple tentative suggestions do not select one automatically. Declare AI assistance as true for decisions reviewed with these materials. Never guess a corrected ID from prose or replace an actual student's original answer. Do not inspect or use protected pilot reference decisions to tune rules before the real freeze.
 
 ## Import completed declarations
 

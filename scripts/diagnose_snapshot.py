@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 import csv
 import hashlib
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -52,6 +53,23 @@ def presence(records, source):
                        "field": field, "records": len(records), "present_n": n,
                        "present_fraction": n / len(records) if records else None,
                        "interpretation": "Snapshot attribute presence, not restaurant coverage or accuracy."})
+    return result
+
+
+def placeholder_names(sample):
+    """Flag explicit missing-name markers without changing the retained sample."""
+    markers = {"no record", "no records", "no record found", "no records found", "n a", "nil"}
+    def marker(value):
+        return re.sub(r"[^a-z0-9]+", " ", str(value or "").casefold()).strip() in markers
+    result = []
+    for b in sample:
+        english, chinese = marker(b.get("name_en")), marker(b.get("name_zh"))
+        if english or chinese:
+            genuine = [a for a in b.get("aliases", []) if str(a).strip() and not marker(a)]
+            result.append({"branch_id": b["branch_id"], "english_name_is_marker": english,
+                           "chinese_name_is_marker": chinese, "genuine_alias_available": bool(genuine),
+                           "coordinate_available": bool(b.get("coords")),
+                           "target_name_verification_needed": not bool(genuine)})
     return result
 
 
@@ -117,7 +135,7 @@ def main():
     after = {k: digest(v) for k, v in paths.items()}
     if before != after:
         raise ValueError("A protected snapshot input changed.")
-    placeholders = [b["branch_id"] for b in sample if str(b.get("name_en", "")).strip().casefold() in {"no record", "no records", "n/a", "nil"}]
+    placeholders = placeholder_names(sample)
     summary = {
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "snapshot_date": "2026-10-23", "source_hashes": before, "inputs_unchanged": before == after,
@@ -128,8 +146,9 @@ def main():
         "at_saved_cap_tasks": sum(t["saved_list_at_cap"] for t in tasks),
         "automatic_top_address_absent": dict(Counter(t["source"] for t in tasks if t["automatic_proposal"] and t["top_address_absent"])),
         "top_high_name_but_over_200m_tasks": sum(t["top_name_similarity"] is not None and t["top_name_similarity"] >= .84 and t["top_distance_m"] is not None and t["top_distance_m"] > 200 for t in tasks),
-        "placeholder_english_name_branches": placeholders,
-        "placeholder_note": "The retained baseline includes these English placeholders as aliases; use genuine alternative-language names when reviewing, and disclose this parser limitation. No baseline was modified here.",
+        "placeholder_english_name_branches": [b["branch_id"] for b in placeholders if b["english_name_is_marker"]],
+        "placeholder_name_diagnostics": placeholders,
+        "placeholder_note": "Explicit missing-name markers are not business names. Use genuine alternative-language names where available; otherwise retain target-identity uncertainty. Missing coordinates also prevent the geographic search. No baseline, source values or sample members were modified here.",
         "independent_labels_read": False, "human_reviews_created": 0,
         "sensitivity_grid": {"score_min": [.78, .82, .86], "margin_min": [.04, .08, .12], "selected_optimum": None},
         "limitations": ["Raw source populations differ.", "Saved candidates are truncated at 12; this audit is not a candidate-miss search.",

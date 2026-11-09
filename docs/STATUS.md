@@ -1,68 +1,49 @@
 # Verified project status
 
-This record describes current evidence, not retrospective claims of work on earlier planned dates.
+Updated 9 November 2026. This records actual evidence, not retrospective completion of the original timetable.
 
-## Immediate milestone
+## Completed computational and documentary work
 
-Current update on 8 November 2026 takes precedence over the historical updates below. Two completed reviewer forms, each containing the same 60 original pairs, have been preserved and strictly imported after one owner-confirmed input correction. The owner reports independent completion without shared answers or machine suggestions. A source-field audit also found 17 originally blank candidate-address cells replaced by a numeric value in each returned form; those are not source addresses and the retained snapshots remain authoritative.
+- Dated 23 October snapshots: 17,271 FEHD licences, a 7,593-record four-district frame, 7,679 OSM food amenities and 153,821 all-category Overture places. The external populations differ.
+- A deterministic 100-premises sample, 25 per district, with 20 pilot premises included; 99 exact licence-ID CSDI joins from the same FEHD lineage.
+- The unchanged baseline retains 2,206 pairs, 200 branch/source tasks and 1,800 provisional field states. It produces 12 OSM and 37 Overture automatic proposals, not validated coverage.
+- Read-only diagnostics reproduce all 49 proposals. Of 200 tasks, 177 hit the 12-candidate cap; 20 have first-candidate name similarity at least 0.84 but distance over 200 metres. A nine-setting score/margin grid selects no optimum.
+- The frame filter checks non-empty strings, not meaningful business names. Two sampled records have explicit missing-name markers: one has a genuine Chinese alternative, the other has both names missing and no joined point. Both remain in the fixed sample.
+- All three final guidelines have been read. A self-contained report draft, ten-slide presentation and five-speaker script are prepared, pending real decisions and final student checks.
 
-Only the 21 calibration pairs have been exported: 16/21 raw agreement (76.2%), unweighted three-class Cohen's kappa 0.561, five disagreements and one additional agreed pair flagged for source-evidence review. These are calibration reviewer-agreement measures, not algorithm accuracy. Genuine third-person adjudication, rule lock and evaluation are still pending. A known label disclosure before locking is retained in the private correction record; the new retrospective evaluation mode avoids an inaccurate unseen-label attestation and retains all original evaluation cases.
+## Returned human evidence
 
-The owner reports only the Yau Tsim Mong main review returned; its revised sheet contains 50 candidate-level judgements (17 Match, 33 Non-match). These do not establish source-wide absence for rejected candidates and do not complete the 40 pilot candidate-miss searches. Other district assistance is not signed human review. Member contributions are deferred at the owner's request and remain required for final submission.
+Two forms contain the same 60 original pairs with different reviewer names. The coordinator reports independent completion without shared answers or machine suggestions. Software validates file content, not actual independence.
 
-All three final submission guidelines have now been read. See `final_submission_requirements.md`; the report is self-contained, code is not submitted for marking, all five members speak in the ten-minute presentation, and a GenAI declaration with exact incorporated prompts is required in the report. Full historical transcript submission is not required. Actual personal reflections and contribution histories are not fabricated.
+Originals remain unchanged. One A-form decision stores literal text `21`; the coordinator clarified its intended decision as Match. Only an import copy records the correction. Each form also has 17 originally blank candidate-address prefills replaced by text `21`; these 34 cells are not source addresses. Original decisions and reasons remain preserved.
 
-The following paragraphs and table retain the 2 November and 23 October historical state. They must not be read as current claims that no forms or final guidelines have arrived.
+Only 21 calibration labels have been exported. Agreement is 16/21 (76.2%), unweighted three-class Cohen's kappa 0.561. These measure reviewer agreement, not algorithm accuracy. Five disagreements and one further agreed pair need genuine third-person evidence decisions; final fields remain blank.
 
-Update on 2 November 2026: the owner requested AI-assisted review rather than checking every source row alone. Evidence preparation has run for the 40 non-pilot Sha Tin branch/source tasks, retaining broader retrieval separately from the baseline and leaving all human inputs blank. Ten pilot tasks remain deferred. No independent human labels, adjudication, genuine freeze or validated metrics have been supplied to this workspace. The private evidence and assistance outputs are separate from public source publication. See `docs/ai_assisted_review.md`; the assistance does not complete the original validation commitment.
+A known evaluation-label disclosure preceded formal locking. Subsequent evaluation must disclose retrospective fixed-rule use, retain all 39 evaluation cases and avoid an unseen-label attestation. Earlier pilot features were visible in development. No genuine freeze or evaluation metrics have been created.
 
-The owner also supplied instructor/TA guidance permitting substantive GenAI assistance while requiring student correctness checks and Final Report tool/prompt disclosure. The Project Plan disclosure waiver does not extend to the Final Report. A checklist is in `docs/ai_use_disclosure.md`; the later final guideline clarifies the exact-prompt requirement without requiring a complete transcript. Genuine student verification remains necessary.
+Only Yau Tsim Mong has returned a main-review sheet: 50 candidate judgements, 17 Match and 33 Non-match. Rejected candidates do not prove source absence. Some reasons claim unit or floor detail missing from the snapshot and require explicit rechecking, not silent rewriting. No pilot miss-search page was returned.
 
-The separate full-sample import and summary workflow is now implemented in `scripts/finalise_main_review.py`, with 22 isolated tests. A blank 200-task handoff is prepared; it is not 200 completed reviews. The importer requires the real independent-review freeze, checks source fields against the retained package, rejects incomplete/duplicate declarations and preserves reviewed-link coverage and field-specific denominators in a new output version. No genuine final main-sample analysis has been run. See `docs/main_review_workflow.md`.
+## AI-assisted evidence
 
-Produce the evidence required for the 20–24 October interim meeting: schema and licence review, reproducible sampling, 20-branch pilot, source extraction, matching tests, validation materials and a progress briefing.
+The earlier Sha Tin workbook covers 40 non-pilot tasks. On 9 November three additional district workbooks were prepared, 40 tasks each, with human decision, reason, name and date fields blank. The 120 new notes suggest IDs in 52 tasks, including uncertain cases; this is not 52 confirmed links. All four districts now have assistance for 160 non-pilot tasks, while 40 pilot searches remain deferred.
 
-## Full project requirements
+Broader retrieval stays separate from the baseline. An address search found a same-unit Overture candidate for the unnamed target, but missing target identity prevents confirmation. A nearby same-brand OSM point has a floor question. Neither observation supplies a human reference label.
 
-- Preserve the submitted research question and four districts.
-- Retain source snapshots, source/release dates, retrieval timestamps and checksums.
-- Document actual schema coverage and comparability.
-- Select 20 pilot branches and a reproducible 100-branch main sample.
-- Implement explainable candidate generation, normalisation and scoring.
-- Prepare at least 60 candidate pairs for two independent human reviewers, with calibration and held-out evaluation kept separate.
-- Check candidate-generation misses for all 20 pilot branches.
-- Report missingness separately from disagreement, with numerator and denominator.
-- Produce supported analysis, figures and an interface with provenance and uncertainty.
-- Complete the final report, presentation and permitted supporting materials against the course requirements.
-- Keep individual reflections and contribution claims tied to actual group-member work.
+Saved XLSX files passed ZIP integrity, task/ID, date, blank-human-field and formula-cache checks. Authoring processes returned nonzero after writing completion messages and files; independent package checks and visual inspection were therefore used. These verify delivered files, not matching accuracy. See `docs/ai_assisted_review.md`.
 
-## Current evidence
+## Remaining work
 
-Actual catch-up date: 23 October 2026. No acquisition, meeting or human review is backdated to the original plan.
+1. Obtain actual third-person decisions for six calibration cases, preserving original answers and real name/date/evidence.
+2. Record the real lock and label-access disclosure, then evaluate the original 39 cases and adjudicate without tuning to their answers.
+3. Finish or explicitly delimit the 200 main-sample declarations and 40 pilot searches. Suggestions are not signed human reviews.
+4. Update reviewed results and synchronize report and slides, retaining uncertainty and denominators.
+5. Add actual contributions, currently deferred by the coordinator; confirm AI tool/model and incorporated prompts; have students check claims and write their own reflections.
+6. Rehearse five speakers for ten minutes. Internal completion target: 15 November. Presentation files: by 16 November under the supplied guideline.
 
-| Item | Evidence now available | Status |
-| --- | --- | --- |
-| Course and literature review | Supplied guidelines audited; nine substantive sources with verification notes | Prepared; later final-report rubric not supplied |
-| FEHD frame | 17,271 licence records; 7,593 in the four district groups | Acquired |
-| Sampling | Fixed hash selection, 20 pilot and 100 provisional main branches | Prepared |
-| FEHD spatial support | 99 sample licence IDs joined exactly to official CSDI distribution; 99 normalised addresses agree | Acquired, not positional ground truth |
-| External snapshots | 7,679 OSM food amenities; 153,821 all-category Overture places in the search box | Acquired; totals have different populations |
-| Matching | Explainable normalisation, blocking, score and ambiguity handling; 2,206 saved pairs | Initial implementation |
-| Pilot proposals | OSM 3 automatic / 9 review / 8 weak; Overture 7 automatic / 10 review / 3 weak | Unvalidated |
-| Independent review | Two separate blank 60-pair files; 21 calibration / 39 label-held-out; K11 development case excluded from evaluation | Prepared; 0 human pairs complete |
-| Post-review validation workflow | Input protection, calibration adjudication checks, actual freeze, guarded held-out opening, scoped pair-set metrics and isolated tests | Implemented; no real human freeze or evaluation yet |
-| Pilot candidate-miss searches | 40-row template for 20 branches × two external sources | Prepared; not performed by group members |
-| Tables and figures | 1,800 provisional field observations, explicit denominators and two status figures | Provisional |
-| Meeting material | English script, current counts, cases, questions and Chinese handoff | Prepared |
-| Website | Search, sample/district filters, side-by-side evidence and browser-local review/export | Deployed privately; core interactions checked |
-| Final report | Working draft using real snapshots and nine numbered background sources | Not a final validated submission |
-| STA feedback and final rubric | User confirms none received so far | Awaiting external information |
-| Personal contributions/logs/reflections | Must be supplied by actual students | Not fabricated |
+Precision, recall, F1 and validated coverage remain unavailable. The course permits substantive GenAI assistance with student responsibility for correctness. The report requires tools and exact incorporated prompts; a complete historical chat transcript is not required.
 
-## Next human-dependent steps
+## Publication and private evidence
 
-Two different group members independently label the same 60 pairs; a third resolves disagreements and uncertain cases. Complete 40 pilot source searches. Use calibration labels first, document any rule changes and freeze the configuration before examining held-out labels. The held-out set reserves reference labels, but pilot features were inspected during development, so it is not a wholly untouched external test set. Complete the main sample adjudication before reporting validated coverage or agreement. Obtain STA feedback and the later official report instructions.
+The user authorised public code publication to https://github.com/QuYunhao07828/comp1110-restaurant-consistency . The 8 November source was remotely verified at `346149796f6404de29654b8504bc84e946b9064c`; later receipts are retained privately. A connection or local edit is not proof of upload.
 
-The evidence package provides the computational catch-up work and a usable meeting handoff. It does not make the original 11–19 October human-review commitment complete. Precision, recall and F1 remain unavailable.
-
-The demonstration Site remains private; its address and deployment identifiers are retained separately rather than published here. The other-course GitHub repository previously seen was not modified. The user created https://github.com/QuYunhao07828/comp1110-restaurant-consistency and explicitly approved public code publication on 23 October after its Public visibility was explained. The initial contents write was refused with HTTP 403, `Resource not accessible by integration`. Following the user's authorisation, the connected application installation list now includes `QuYunhao07828`. Source publication and remote verification are tracked in the local `docs/github_publication_receipt.json`; account connection alone is not proof of an uploaded commit. Only code, method documentation and static interface files are in publication scope. Study data, human inputs, private Site configuration and personal local paths are excluded. Publishing code does not establish research completion.
+The allowlist contains code, method documents and static interface source. Snapshots, reviewer forms, generated reports, private deployment metadata and personal local paths are excluded. The private prototype supports search, district filters, evidence and browser-local review/export. Functional checks do not establish research completion or user benefit. The unrelated other-course repository was not modified.

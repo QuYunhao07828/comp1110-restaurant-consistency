@@ -1,6 +1,6 @@
 """Isolated diagnostic rule tests, never study observations."""
 import unittest
-from diagnose_snapshot import presence, proposed_ids
+from diagnose_snapshot import presence, proposed_ids, placeholder_names
 
 
 def row(rid, score=.9, name=.9, distance=10):
@@ -24,6 +24,17 @@ class SnapshotDiagnosticTests(unittest.TestCase):
         self.assertEqual(result["aliases"]["present_n"], 1)
         self.assertEqual(result["aliases"]["records"], 2)
         self.assertEqual(result["opening_hours"]["present_fraction"], 0)
+
+    def test_placeholder_markers_and_real_alternative_names(self):
+        rows = placeholder_names([
+            {"branch_id":"A", "name_en":"(no record found)", "name_zh":"(no record found)", "aliases":["(no record found)"], "coords":None},
+            {"branch_id":"B", "name_en":"No Record", "name_zh":"真正店名", "aliases":["No Record","真正店名"], "coords":[114,22]},
+            {"branch_id":"C", "name_en":"No Record Cafe", "name_zh":"", "aliases":["No Record Cafe"]},
+        ])
+        self.assertEqual([r["branch_id"] for r in rows], ["A","B"])
+        self.assertTrue(rows[0]["target_name_verification_needed"])
+        self.assertFalse(rows[0]["coordinate_available"])
+        self.assertFalse(rows[1]["target_name_verification_needed"])
 
 
 if __name__ == "__main__":

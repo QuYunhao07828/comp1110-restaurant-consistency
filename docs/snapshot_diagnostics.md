@@ -21,6 +21,6 @@ Proposal count measures how often the specified rule accepts a candidate automat
 
 Renormalising available score weights can make a missing address less penalising than an observed poor address. The additional name, distance and margin gates remain necessary. The diagnostics identify tasks affected by missing address features rather than pretending that a score is a probability.
 
-One retained English target name is a placeholder with a genuine Chinese alternative. That parser limitation is disclosed without altering the baseline or removing the branch. Corrections to parsing or semantic address comparison belong in a separately versioned analysis.
+The retained sample includes explicit missing-name markers. One has a genuine Chinese alternative; another has marker values in both languages and lacks coordinates. Do not use a marker as a business name or claim that a name-only fuzzy search provides identity evidence for the unidentified target. This parser limitation is disclosed without changing the fixed sample or baseline. Corrections to parsing or semantic address comparison belong in a separately versioned analysis.
 
 `scripts/test_snapshot_diagnostics.py` uses isolated fixtures to check the four acceptance gates, alternative-candidate margin, duplicate assignments and full attribute-presence denominators. These are implementation checks, not research labels.
