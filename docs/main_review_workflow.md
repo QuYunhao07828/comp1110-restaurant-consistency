@@ -24,6 +24,8 @@ Use one of these decisions:
 
 The four district AI workbooks remain separate assistance views, each with 40 non-pilot tasks and ten deferred pilot tasks. If suggestions are accepted or corrected, retain the filled original and transcribe the final explicit record ID and evidence into the standard declaration format. The human reason must identify the exact accepted ID; multiple tentative suggestions do not select one automatically. Declare AI assistance as true for decisions reviewed with these materials. Never guess a corrected ID from prose or replace an actual student's original answer. Do not inspect or use protected pilot reference decisions to tune rules before the real freeze.
 
+The administrator can instead use `scripts/import_assisted_returns.py` to read a genuinely filled district XLSX directly. The adapter checks the original form/notes, fixed targets, complete human fields, dates and source-record IDs, and writes a versioned 40-task declaration CSV with AI assistance declared. A changed or newly selected ID must be explicit in J as `ID=<exact ID>; <reason>`. It creates no pilot declarations or final metrics. See `docs/assisted_return_import.md` for the command and limits. The two pathways preserve the same final 200-task and genuine-freeze requirements.
+
 ## Import completed declarations
 
 ```powershell

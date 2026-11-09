@@ -33,6 +33,8 @@ Saved XLSX files passed ZIP integrity, task/ID, date, blank-human-field and form
 
 ## Remaining work
 
+An additional administrator adapter now imports genuinely filled district assistance XLSX files into standard non-pilot declarations, preserving original files and explicit AI-use flags. Sixteen isolated tests and checks of the four actual blank originals cover this handoff. Those originals are still blank and no new human declarations or final statistics were created. See `docs/assisted_return_import.md`.
+
 1. Obtain actual third-person decisions for six calibration cases, preserving original answers and real name/date/evidence.
 2. Record the real lock and label-access disclosure, then evaluate the original 39 cases and adjudicate without tuning to their answers.
 3. Finish or explicitly delimit the 200 main-sample declarations and 40 pilot searches. Suggestions are not signed human reviews.

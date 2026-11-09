@@ -20,6 +20,10 @@ Two different actual members independently complete the same 60-pair A/B files. 
 
 Use ISO dates or actual Excel date cells. Do not backdate. Evidence is mandatory. Blank/partial inputs are rejected. Baseline matching, split regeneration and workbook generation now stop when supplied human review inputs or a returned batch would be overwritten. Keep additional backups nonetheless.
 
+The browser's original independent-review form exports both the original `pair_id` and immutable `candidate_id`, followed by the actual reviewer, decision, evidence and date. Its local completion counter requires all four human fields; this is filled-form progress, not adjudicated reference truth. Completed student returns are retained separately and are not replaced by new browser entries. The main interface distinguishes adjudicated reference-pair counts from received forms.
+
+`scripts/test_review_export.mjs` round-trips 60 isolated fixture rows through the actual CSV parser, including Unicode, quotes and newlines, and checks changed IDs, incomplete decisions and missing dates. Set `RUNTIME_PYTHON_BINARY` to the configured bundled Python executable before running it with the bundled Node runtime. This is a data-contract check without a browser; it does not prove visual layout or supply study labels.
+
 ## 2. Import and adjudicate calibration only
 
 Example PowerShell commands below assume Python with `requirements.txt` installed, and execution from the project root. `returned_A.xlsx` and `returned_B.xlsx` are the genuinely completed files. Paths are examples, not files that currently contain completed work.

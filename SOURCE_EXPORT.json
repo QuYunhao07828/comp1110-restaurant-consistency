@@ -1,5 +1,5 @@
 {
-  "exported_utc": "2026-11-09T08:39:35+00:00",
+  "exported_utc": "2026-11-09T09:46:07+00:00",
   "scope": "Code, method documentation and static UI only. Study data, human inputs, private Site metadata and personal local paths are excluded.",
   "files": [
     {
@@ -16,6 +16,11 @@
       "path": "docs/ai_use_disclosure.md",
       "bytes": 3768,
       "sha256": "baae3f5642f231499a366244d3a10b6ba4c66fa1b34cd1f13da4e84a4a533b95"
+    },
+    {
+      "path": "docs/assisted_return_import.md",
+      "bytes": 4460,
+      "sha256": "05b9b85aee3e99759e87bd0d9e2e950e85632e0e19ffbf4c212132abf96669bc"
     },
     {
       "path": "docs/course_requirements.md",
@@ -39,8 +44,8 @@
     },
     {
       "path": "docs/main_review_workflow.md",
-      "bytes": 5329,
-      "sha256": "ae89c07d01dd1b40856e73a2a607ac68bba5dd182124a05f0a89e515786d89ab"
+      "bytes": 5921,
+      "sha256": "3d67f3af3499397d5ee6c84da23e210c6da5067f0c67a6de6473c722fbd6fb23"
     },
     {
       "path": "docs/methodology.md",
@@ -54,8 +59,8 @@
     },
     {
       "path": "docs/review_workflow.md",
-      "bytes": 9722,
-      "sha256": "86fabd3364181d3633a81dc91260cc5b06cf282ab1899802ee3bf3efea730294"
+      "bytes": 10637,
+      "sha256": "2f3b9613a6b81c96fcfcf45c99ae7ba8e7a699d72061049fcd24e20103e79ba0"
     },
     {
       "path": "docs/snapshot_diagnostics.md",
@@ -64,13 +69,13 @@
     },
     {
       "path": "docs/START_HERE_CN.md",
-      "bytes": 4434,
-      "sha256": "98194b056c4b771ace25b1a7ae5df9499b34b71ce926244fe7093cf871e8db4c"
+      "bytes": 4792,
+      "sha256": "c07c6cf3bf03649dfbad48c373b0092cca7cc55c7a0c4d27678b0d5d945028b7"
     },
     {
       "path": "docs/STATUS.md",
-      "bytes": 5836,
-      "sha256": "655f7ad2cc891f382847163b00ab547b835bfc4e09adeb30bdaaa9bb2f13df5b"
+      "bytes": 6247,
+      "sha256": "4766d189cc45df30befa210eb825658686dc6d32955b6f17865b406254f54f63"
     },
     {
       "path": "README.md",
@@ -158,6 +163,11 @@
       "sha256": "0a2b099ea22ce57c568cca8aef73570c7ca93863d0f384ff2d7943e98e3acf55"
     },
     {
+      "path": "scripts/import_assisted_returns.py",
+      "bytes": 10647,
+      "sha256": "8569fdf592bb32df673b5c587721152dbd5f705dcb711f5dea40aefe0667603a"
+    },
+    {
       "path": "scripts/ingest_reviews.py",
       "bytes": 5260,
       "sha256": "be6fb60a58dc4ae69181adc44e067fe6482e60af4ec96f9e10337c4079bd9ced"
@@ -208,6 +218,11 @@
       "sha256": "3fe4104108e86231b7a0b6f2d1f51675b049d1da04e0e56d1683b627ed565efe"
     },
     {
+      "path": "scripts/test_assisted_return_import.py",
+      "bytes": 13587,
+      "sha256": "554f26cd57a69ddbd312738950076e9cfe238d66380559e8c0a53a49d555199b"
+    },
+    {
       "path": "scripts/test_evaluation.py",
       "bytes": 13843,
       "sha256": "087452a747a1946726c17d0d36d3d3b48d3091feb9ad2538b6fac590af8c7ace"
@@ -223,6 +238,11 @@
       "sha256": "bd419e15548b150632f481ca2451d30f4c7bed24b8f967f4e198a3d891b24f66"
     },
     {
+      "path": "scripts/test_review_export.mjs",
+      "bytes": 3104,
+      "sha256": "81a1e145730159900eca8ce5bfb6dadf7a76dd5182f0542d2c7ead05d3e12804"
+    },
+    {
       "path": "scripts/test_reviews.py",
       "bytes": 1271,
       "sha256": "5259108dcf512fda155dce3ca3ff197a9d70dead0cc31f5bdaa5483e8c625b8f"
@@ -234,23 +254,23 @@
     },
     {
       "path": "site/dist/app.js",
-      "bytes": 5968,
-      "sha256": "b392a9b70c6c9d133da912175f349bfb3040df05ddbb0aedc4c2d903dcad2300"
+      "bytes": 5978,
+      "sha256": "e7d0625444b79dd646ab265ff503f65d16771fab4db8e4186e15fa1c82f24ef7"
     },
     {
       "path": "site/dist/index.html",
-      "bytes": 4476,
-      "sha256": "ac80a6982ae2811f5aa631e8c959d0e2eb8eaad4e27fceaa661c3be5317ed4f6"
+      "bytes": 4562,
+      "sha256": "754cff887a4ed29945d3c78fc034abc16950d984e3b83c801f7fd30932b2f844"
     },
     {
       "path": "site/dist/review.html",
-      "bytes": 1497,
-      "sha256": "472a61ae1c0785d8e0f1daa0e468d931988ee23d09d2341315d938ceadc14409"
+      "bytes": 1580,
+      "sha256": "3054af6a05482b650b7f168ef09de34663fa09ba336a2496d926b8fabc0dfa63"
     },
     {
       "path": "site/dist/review.js",
-      "bytes": 3981,
-      "sha256": "2efc006bb5016d1e078f50e7ddf142a08d679eda3d2e6b798f6dbf40b79cfa14"
+      "bytes": 4485,
+      "sha256": "c9c5e35f98abe018d6e1a28fbe9a0df35533012f94e6c668bd9342b839047619"
     },
     {
       "path": "site/dist/styles.css",
